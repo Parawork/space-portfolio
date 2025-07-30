@@ -15,8 +15,16 @@ export const HeroContent = () => {
     <motion.div
       initial="hidden"
       animate="visible"
-      className="flex flex-row items-center justify-center px-20 mt-40 w-full z-[20]"
+      className="relative flex flex-row items-center justify-center px-20 mt-40 w-full z-[20]"
     >
+      <video
+        autoPlay
+        muted
+        loop
+        className="rotate-180 absolute top-[-340px] left-0 w-full h-full object-cover -z-20"
+      >
+        <source src="/videos/blackhole.webm" type="video/webm" />
+      </video>
       <div className="h-full w-full flex flex-col gap-5 justify-center m-auto text-start">
         <motion.div
           variants={slideInFromTop}
