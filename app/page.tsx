@@ -2,7 +2,9 @@ import { Encryption } from "@/components/main/encryption";
 import { Hero } from "@/components/main/hero";
 import { Projects } from "@/components/main/projects";
 import { Skills } from "@/components/main/skills";
-import { Hero2 } from "@/components/main/hero2";
+import Hero2 from "@/components/main/hero2";
+
+// Add Hero component to the page
 
 export default function Home() {
   return (
