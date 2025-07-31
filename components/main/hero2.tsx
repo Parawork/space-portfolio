@@ -1,6 +1,7 @@
 "use client";
 import { Canvas, useFrame } from "@react-three/fiber";
 import HeroText from "../sub/HeroText";
+
 import ParallaxBackground from "../sub/ParallaxBackground";
 import { Astronaut } from "../sub/Astronaut";
 import { Float } from "@react-three/drei";

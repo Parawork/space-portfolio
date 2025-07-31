@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import type { PropsWithChildren } from "react";
-import { Hero2 } from "@/components/main/hero2";
 import { Footer } from "@/components/main/footer";
 import { Navbar } from "@/components/main/navbar";
 import { StarsCanvas } from "@/components/main/star-background";
@@ -29,7 +28,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
       >
         <StarsCanvas />
         <Navbar />
-        {children}
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>
