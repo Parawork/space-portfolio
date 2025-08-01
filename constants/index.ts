@@ -362,3 +362,29 @@ export const NAV_LINKS = [
 export const LINKS = {
   sourceCode: "https://github.com/sanidhyy/space-portfolio",
 };
+
+export const CAREER_DATA = [
+  {
+    id: 1,
+    position: "Software Engineer Intern",
+    company: "TechFlow Solutions",
+    location: "San Francisco, CA",
+    duration: "Jun 2020 - Aug 2020",
+    type: "internship",
+    description:
+      "Contributed to the development of a customer analytics platform using React and Node.js. Collaborated with cross-functional teams to implement new features and optimize existing code. Gained hands-on experience with modern web development practices and agile methodologies.",
+    color: "#4F46E5",
+  },
+  {
+    id: 2,
+    position: "Frontend Developer",
+    company: "Digital Innovations Inc",
+    location: "Austin, TX",
+    duration: "Sep 2020 - Mar 2022",
+    type: "fulltime",
+    description:
+      "Specialized in creating modern, responsive web applications using React and TypeScript. Led the migration of legacy codebase to modern frameworks and established coding standards for the frontend team.",
+
+    color: "#059669",
+  },
+] as const;

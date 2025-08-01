@@ -28,7 +28,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
       >
         <StarsCanvas />
         <Navbar />
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div
+          className="mx-auto w-full px-4 sm:px-6 lg:px-8"
+          style={{ maxWidth: "1400px" }}
+        >
           {children}
         </div>
         <Footer />
