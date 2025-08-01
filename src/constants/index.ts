@@ -282,51 +282,60 @@ export const PROJECTS = [
 
 export const FOOTER_DATA = [
   {
-    title: "Community",
+    title: "Connect",
     data: [
-      
       {
         name: "GitHub",
         icon: RxGithubLogo,
         link: "https://github.com/Parawork",
       },
       {
-        name: "Discord",
-        icon: RxDiscordLogo,
-        link: "https://discord.com/users/1009399816503185440",
+        name: "LinkedIn",
+        icon: RxLinkedinLogo,
+        link: "https://www.linkedin.com/in/parakrama-rathnayaka-b938ab2a1",
+      },
+      {
+        name: "Instagram",
+        icon: RxInstagramLogo,
+        link: "https://instagram.com",
       },
     ],
   },
   {
-    title: "Social Media",
+    title: "Projects",
     data: [
       {
-        name: "Github",
-        icon: RxGithubLogo,
+        name: "Portfolio Website",
+        icon: null,
+        link: "#projects",
+      },
+      {
+        name: "Open Source",
+        icon: null,
         link: "https://github.com/Parawork",
       },
       {
-        name: "Linkedin",
-        icon: RxLinkedinLogo,
-        link: "www.linkedin.com/in/parakrama-rathnayaka-b938ab2a1",
+        name: "Code Examples",
+        icon: null,
+        link: "#code-samples",
       },
     ],
   },
   {
-    title: "About",
+    title: "Resources",
     data: [
       {
-        name: "Become Sponsor",
+        name: "Resume",
         icon: null,
-        link: "https://youtube.com",
+        link: "/resume.pdf",
       },
       {
-        name: "Learning about me",
+        name: "Blog",
         icon: null,
-        link: "https://example.com",
+        link: "#blog",
       },
       {
-        name: "Contact Me",
+        name: "Contact",
         icon: null,
         link: "mailto:parakrama.22@cse.mrt.ac.lk",
       },
