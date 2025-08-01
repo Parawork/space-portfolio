@@ -96,3 +96,11 @@
 html {
   scroll-behavior: smooth;
 }
+
+.text-secondary {
+  color: #aaa6c3;
+}
+
+.text-white-100 {
+  color: #f3f3f3;
+}

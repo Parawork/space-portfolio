@@ -39,3 +39,14 @@ export const siteConfig: Metadata = {
     url: "https://github.com/sanidhyy",
   },
 } as const;
+
+
+export const config = {
+  sections: {
+    experience: {
+      title: "Work Experience",
+      subtitle:
+        "Journey through my professional milestones and career achievements",
+    },
+  },
+};
