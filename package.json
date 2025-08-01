@@ -47,10 +47,6 @@
     "css"
   ],
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/sanidhyy/space-portfolioit"
-  },
   "homepage": "https://github.com/sanidhyy/space-portfolio#readme",
   "bugs": {
     "url": "https://github.com/sanidhyy/space-portfolio/issues",

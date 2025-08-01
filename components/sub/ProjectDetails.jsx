@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react";
+import Image from "next/image";
 const ProjectDetails = ({
     title,
     description,
@@ -20,9 +21,9 @@ const ProjectDetails = ({
                     onClick={closeModal}
                     className="absolute p-2 rounded-sm top-5 right-5 bg-midnight hover:bg-gray-500"
                 >
-                    <img src="assets/close.svg" className="w-6 h-6 cursor-pointer" />
+                    <Image src="/assets/close.svg" alt="close" className="w-6 h-6 cursor-pointer" width={24} height={24} />
                 </button>
-                <img src={image} alt={title} className="w-full rounded-t-2xl" />
+                <Image src={image} alt={title} className="w-full rounded-t-2xl" width={400} height={300} />
                 <div className="p-5">
                     <h5 className="mb-2 text-2xl font-bold text-white">{title}</h5>
                     <p className="mb-3 font-normal text-neutral-400">{description}</p>
@@ -32,17 +33,19 @@ const ProjectDetails = ({
                     <div className="flex items-center justify-between mt-4">
                         <div className="flex gap-3">
                             {tags.map((tag) => (
-                                <img
+                                <Image
                                     key={tag.id}
                                     src={tag.path}
                                     alt={tag.name}
                                     className="rounded-lg size-10 hover-animation"
+                                    width={40}
+                                    height={40}
                                 />
                             ))}
                         </div>
                         <a className="inline-flex items-center gap-1 font-medium cursor-pointer hover-animation" href={href} target="_blank">
                             View Project{" "}
-                            <img src="assets/arrow-up.svg" className="size-4" />
+                            <Image src="/assets/arrow-up.svg" alt="arrow up" className="size-4" width={16} height={16} />
                         </a>
                     </div>
                 </div>

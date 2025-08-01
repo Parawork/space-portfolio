@@ -47,7 +47,7 @@ const HeroText = () => {
               transition={{ type: "spring", stiffness: 80, delay: 1 }}
               tabIndex={0}
             >
-              Hi, I'm <span className="text-[#00fff7]">Parakrama</span>
+              Hi, I&apos;m <span className="text-[#00fff7]">Parakrama</span>
             </motion.h1>
             <div className="flex flex-col items-start">
               <motion.p
@@ -93,7 +93,7 @@ const HeroText = () => {
               transition={{ type: "spring", stiffness: 80, delay: 1 }}
               tabIndex={0}
             >
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="text-[#00fff7]">Parakrama Rathnayaka</span>
             </motion.p>
             <div>
