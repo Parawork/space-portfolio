@@ -33,7 +33,7 @@ const SimpleFlipWords = ({ words, duration = 2500 }: { words: string[], duration
 
 export const Footer = () => {
   return (
-    <footer className="relative w-full overflow-hidden">
+    <footer className="relative w-full overflow-hidden pb-3">
       {/* Futuristic Background */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-gray-900/95 to-transparent"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent"></div>
@@ -51,8 +51,13 @@ export const Footer = () => {
         <div className="text-center mb-12">
           <div className="inline-block relative">
             <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 bg-clip-text text-transparent mb-4">
-              <SimpleFlipWords 
-                words={["SOFTWARE ENGINEER", "FULL-STACK DEVELOPER", "CODE ARCHITECT", "TECH INNOVATOR"]}
+              <SimpleFlipWords
+                words={[
+                  "SOFTWARE ENGINEER",
+                  "FULL-STACK DEVELOPER",
+                  "CODE ARCHITECT",
+                  "TECH INNOVATOR",
+                ]}
                 duration={2500}
               />
             </h2>
@@ -72,10 +77,10 @@ export const Footer = () => {
               <div className="flex items-center mb-4">
                 <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse mr-3 shadow-lg shadow-green-400/50"></div>
                 <h3 className="text-xl font-bold text-white tracking-wide">
-                  PARAKRAMA@DEVOPS
+                  PARAKRAMA
                 </h3>
               </div>
-              
+
               {/* DevOps Terminal */}
               <div className="bg-black/50 rounded-lg p-4 mb-4 border border-green-400/30">
                 <div className="flex items-center mb-2">
@@ -99,24 +104,6 @@ export const Footer = () => {
                     {"✓ Deployment successful"}
                   </span>
                 </p>
-              </div>
-
-              {/* Contact Info */}
-              <div className="space-y-3">
-                <div className="flex items-center text-sm group">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3 group-hover:shadow-lg group-hover:shadow-cyan-400/50 transition-all duration-300"></div>
-                  <span className="text-gray-400 font-mono">EMAIL:</span>
-                  <span className="text-cyan-300 ml-2 hover:text-cyan-100 transition-colors">
-                    parakrama.22@cse.mrt.ac.lk
-                  </span>
-                </div>
-                <div className="flex items-center text-sm group">
-                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3 group-hover:shadow-lg group-hover:shadow-purple-400/50 transition-all duration-300"></div>
-                  <span className="text-gray-400 font-mono">PHONE:</span>
-                  <span className="text-purple-300 ml-2 hover:text-purple-100 transition-colors">
-                    +94 77 352 8200
-                  </span>
-                </div>
               </div>
             </div>
           </div>

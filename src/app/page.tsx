@@ -1,4 +1,4 @@
-import { Hero, Projects, Skills, Work } from "@/components/sections";
+import { Hero, Projects, Skills, Work, Contact } from "@/components/sections";
 
 // Add Hero component to the page
 
@@ -10,7 +10,7 @@ export default function Home() {
         <Projects />
         <Skills />
         <Work />
-        <Skills />
+        <Contact />
       </div>
     </main>
   );
