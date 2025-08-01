@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { Terminal } from "@xterm/xterm";
-import { FitAddon } from "@xterm/addon-fit";
-import { WebLinksAddon } from "@xterm/addon-web-links";
-import "@xterm/xterm/css/xterm.css";
-import { 
-  sendEmail, type ContactFormData } from "@/lib/email";
+import React, { useState, useRef } from "react";
+import { sendEmail, type ContactFormData } from "@/lib/email";
+import {
+  InteractiveTerminal,
+  type TerminalRef,
+} from "@/components/ui/InteractiveTerminal";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,158 +16,61 @@ export const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [isTerminalInteractive, setIsTerminalInteractive] = useState(false);
   
-  const terminalRef = useRef<HTMLDivElement>(null);
-  const terminal = useRef<Terminal | null>(null);
+  const terminalRef = useRef<TerminalRef | null>(null);
 
-  useEffect(() => {
-    if (terminalRef.current && !terminal.current) {
-      try {
-        // Initialize terminal
-        terminal.current = new Terminal({
-          theme: {
-            background: "#0a0a0a",
-            foreground: "#00ff00",
-            cursor: "#00ff00",
-            cursorAccent: "#00ff00",
-          },
-          fontFamily: "Monaco, 'Cascadia Code', 'Ubuntu Mono', monospace",
-          fontSize: 13,
-          lineHeight: 1.2,
-          cursorBlink: true,
-          allowTransparency: true,
-          rows: 24,
-          cols: 80,
-        });
-
-        const fitAddon = new FitAddon();
-        const webLinksAddon = new WebLinksAddon();
-        
-        terminal.current.loadAddon(fitAddon);
-        terminal.current.loadAddon(webLinksAddon);
-        
-        terminal.current.open(terminalRef.current);
-        
-        // Wait for the terminal to be fully rendered before fitting
+  // Handle custom commands in interactive mode
+  const handleTerminalCommand = (command: string) => {
+    const cmd = command.toLowerCase().trim();
+    
+    switch (cmd) {
+      case 'contact':
+        terminalRef.current?.writeln("📧 Contact Information:");
+        terminalRef.current?.writeln("Email: parakrama.22@cse.mrt.ac.lk");
+        terminalRef.current?.writeln("Phone: +94 77 352 8200");
+        terminalRef.current?.writeln("Location: Colombo, Sri Lanka");
+        break;
+      case 'skills':
+        terminalRef.current?.writeln("💻 Technical Skills:");
+        terminalRef.current?.writeln("Frontend: React, Next.js, TypeScript");
+        terminalRef.current?.writeln("Backend: Node.js, Express, Python");
+        terminalRef.current?.writeln("Database: MongoDB, PostgreSQL, Firebase");
+        terminalRef.current?.writeln("DevOps: Docker, Git, CI/CD");
+        break;
+      case 'projects':
+        terminalRef.current?.writeln("🚀 Recent Projects:");
+        terminalRef.current?.writeln("1. Enhanced portfolio with security features");
+        terminalRef.current?.writeln("2. Interactive terminal component");
+        terminalRef.current?.writeln("3. Responsive design improvements");
+        break;
+      case 'status':
+        terminalRef.current?.writeln("📊 Current Status:");
+        terminalRef.current?.writeln("✓ Available for opportunities");
+        terminalRef.current?.writeln("✓ Contact form active");
+        terminalRef.current?.writeln("✓ Response time: < 24h");
+        break;
+      case 'switch':
+        setIsTerminalInteractive(false);
+        terminalRef.current?.writeln("Switching to display mode...");
         setTimeout(() => {
-          try {
-            fitAddon.fit();
-          } catch (error) {
-            console.warn("Terminal fit error:", error);
-          }
-        }, 100);
-
-        // Terminal content
-        const commands = [
-          "$ whoami",
-          "parakrama@dev-machine",
-          "",
-          "$ pwd",
-          "/home/parakrama/portfolio/contact",
-          "",
-          "$ cat contact_info.json",
-          "{",
-          '  "name": "Parakrama Rathnayaka",',
-          '  "role": "Software Engineer",',
-          '  "email": "parakrama.22@cse.mrt.ac.lk",',
-          '  "phone": "+94 77 352 8200",',
-          '  "location": "Colombo, Sri Lanka",',
-          '  "availability": "Open to opportunities",',
-          '  "preferred_contact": "email"',
-          "}",
-          "",
-          "$ cat skills.txt",
-          "Frontend: React, Next.js, TypeScript",
-          "Backend: Node.js, Express, Python",
-          "Database: MongoDB, PostgreSQL, Firebase",
-          "DevOps: Docker, Git, CI/CD",
-          "Cloud: AWS, Vercel, Netlify",
-          "",
-          "$ git log --oneline -5",
-          "a1b2c3d feat: enhanced portfolio contact form",
-          "e4f5g6h fix: responsive design improvements",
-          "i7j8k9l add: interactive terminal component",
-          "m0n1o2p refactor: code optimization",
-          "q3r4s5t docs: updated README",
-          "",
-          "$ npm run contact:status",
-          "✓ Contact form: ACTIVE",
-          "✓ Email service: OPERATIONAL",
-          "✓ Response time: < 24h",
-          "✓ SSL encryption: ENABLED",
-          "",
-          "$ echo 'Feel free to reach out!'",
-          "Feel free to reach out!",
-          "",
-          "$ █"
-        ];
-
-        let index = 0;
-        const typeCommand = () => {
-          if (index < commands.length) {
-            const command = commands[index];
-            if (command === "") {
-              terminal.current?.writeln("");
-            } else if (command.startsWith("$ ")) {
-              terminal.current?.write("\r\n\x1b[32m$ \x1b[37m");
-              const cmd = command.substring(2);
-              let charIndex = 0;
-              const typeChar = () => {
-                if (charIndex < cmd.length) {
-                  terminal.current?.write(cmd[charIndex]);
-                  charIndex++;
-                  setTimeout(typeChar, 50);
-                } else {
-                  setTimeout(() => {
-                    index++;
-                    typeCommand();
-                  }, 500);
-                }
-              };
-              typeChar();
-            } else {
-              terminal.current?.write("\r\n" + command);
-              index++;
-              setTimeout(typeCommand, 100);
-            }
-          } else {
-            // Keep cursor blinking at the end
-            terminal.current?.write("\r\n\x1b[32m$ \x1b[37m");
-          }
-        };
-
-        // Start typing animation after a short delay
-        setTimeout(() => {
-          terminal.current?.writeln("Welcome to Parakrama's Interactive Terminal");
-          terminal.current?.writeln("==========================================");
-          typeCommand();
+          window.location.reload(); // Simple way to reset terminal
         }, 1000);
-
-        // Handle window resize
-        const handleResize = () => {
-          try {
-            fitAddon.fit();
-          } catch (error) {
-            console.warn("Terminal resize error:", error);
-          }
-        };
-        window.addEventListener("resize", handleResize);
-
-        return () => {
-          window.removeEventListener("resize", handleResize);
-          terminal.current?.dispose();
-        };
-      } catch (error) {
-        console.error("Terminal initialization error:", error);
-      }
+        break;
+      default:
+        // Let the built-in handler take care of it
+        return false;
     }
-  }, []);
+    return true;
+  };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -181,9 +83,11 @@ export const Contact = () => {
     if (formData.name.length < 2) {
       setSubmitStatus("error");
       setIsSubmitting(false);
-      if (terminal.current) {
-        terminal.current.write("\r\n\x1b[31m[ERROR] Name must be at least 2 characters long\x1b[37m");
-        terminal.current.write("\r\n\x1b[32m$ \x1b[37m");
+      if (terminalRef.current) {
+        terminalRef.current.write(
+          "\r\n\x1b[31m[ERROR] Name must be at least 2 characters long\x1b[37m"
+        );
+        terminalRef.current.write("\r\n\x1b[32m$ \x1b[37m");
       }
       return;
     }
@@ -191,9 +95,11 @@ export const Contact = () => {
     if (formData.message.length < 10) {
       setSubmitStatus("error");
       setIsSubmitting(false);
-      if (terminal.current) {
-        terminal.current.write("\r\n\x1b[31m[ERROR] Message must be at least 10 characters long\x1b[37m");
-        terminal.current.write("\r\n\x1b[32m$ \x1b[37m");
+      if (terminalRef.current) {
+        terminalRef.current.write(
+          "\r\n\x1b[31m[ERROR] Message must be at least 10 characters long\x1b[37m"
+        );
+        terminalRef.current.write("\r\n\x1b[32m$ \x1b[37m");
       }
       return;
     }
@@ -203,9 +109,11 @@ export const Contact = () => {
     if (!emailRegex.test(formData.email)) {
       setSubmitStatus("error");
       setIsSubmitting(false);
-      if (terminal.current) {
-        terminal.current.write("\r\n\x1b[31m[ERROR] Please provide a valid email address\x1b[37m");
-        terminal.current.write("\r\n\x1b[32m$ \x1b[37m");
+      if (terminalRef.current) {
+        terminalRef.current.write(
+          "\r\n\x1b[31m[ERROR] Please provide a valid email address\x1b[37m"
+        );
+        terminalRef.current.write("\r\n\x1b[32m$ \x1b[37m");
       }
       return;
     }
@@ -213,40 +121,73 @@ export const Contact = () => {
     try {
       // Send email using the email utility
       const result = await sendEmail(formData as ContactFormData);
-      
+
       // Add terminal feedback
-      if (terminal.current) {
-        terminal.current.write("\r\n\x1b[36m[INFO] Processing contact form submission...\x1b[37m");
-        terminal.current.write(`\r\n\x1b[33mFrom: ${formData.name} <${formData.email}>\x1b[37m`);
-        terminal.current.write(`\r\n\x1b[33mSubject: ${formData.subject}\x1b[37m`);
-        terminal.current.write("\r\n\x1b[36m[INFO] Running security checks...\x1b[37m");
-        terminal.current.write("\r\n\x1b[32m✓ Email format validated\x1b[37m");
-        terminal.current.write("\r\n\x1b[32m✓ Input sanitized\x1b[37m");
-        terminal.current.write("\r\n\x1b[32m✓ Rate limit check passed\x1b[37m");
-        
-        if (result.mode === 'demo') {
-          terminal.current.write("\r\n\x1b[33m⚠ Running in DEMO mode (email config needed)\x1b[37m");
-          terminal.current.write("\r\n\x1b[32m✓ Message logged to console\x1b[37m");
+      if (terminalRef.current) {
+        terminalRef.current.write(
+          "\r\n\x1b[36m[INFO] Processing contact form submission...\x1b[37m"
+        );
+        terminalRef.current.write(
+          `\r\n\x1b[33mFrom: ${formData.name} <${formData.email}>\x1b[37m`
+        );
+        terminalRef.current.write(
+          `\r\n\x1b[33mSubject: ${formData.subject}\x1b[37m`
+        );
+        terminalRef.current.write(
+          "\r\n\x1b[36m[INFO] Running security checks...\x1b[37m"
+        );
+        terminalRef.current.write(
+          "\r\n\x1b[32m✓ Email format validated\x1b[37m"
+        );
+        terminalRef.current.write("\r\n\x1b[32m✓ Input sanitized\x1b[37m");
+        terminalRef.current.write(
+          "\r\n\x1b[32m✓ Rate limit check passed\x1b[37m"
+        );
+
+        if (result.mode === "demo") {
+          terminalRef.current.write(
+            "\r\n\x1b[33m⚠ Running in DEMO mode (email config needed)\x1b[37m"
+          );
+          terminalRef.current.write(
+            "\r\n\x1b[32m✓ Message logged to console\x1b[37m"
+          );
         } else {
-          terminal.current.write("\r\n\x1b[32m✓ Message sent successfully!\x1b[37m");
-          terminal.current.write("\r\n\x1b[36mℹ No auto-reply sent (security feature)\x1b[37m");
-          terminal.current.write("\r\n\x1b[36mℹ You will receive a personal response\x1b[37m");
+          terminalRef.current.write(
+            "\r\n\x1b[32m✓ Message sent successfully!\x1b[37m"
+          );
+          terminalRef.current.write(
+            "\r\n\x1b[36mℹ No auto-reply sent (security feature)\x1b[37m"
+          );
+          terminalRef.current.write(
+            "\r\n\x1b[36mℹ You will receive a personal response\x1b[37m"
+          );
         }
-        terminal.current.write("\r\n\x1b[32m$ \x1b[37m");
+        terminalRef.current.write("\r\n\x1b[32m$ \x1b[37m");
       }
 
       setSubmitStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
-      console.error('Failed to send email:', error);
+      console.error("Failed to send email:", error);
       setSubmitStatus("error");
-      if (terminal.current) {
-        terminal.current.write("\r\n\x1b[31m[ERROR] Failed to send message\x1b[37m");
-        terminal.current.write(`\r\n\x1b[31mError: ${error instanceof Error ? error.message : 'Unknown error'}\x1b[37m`);
-        if (error instanceof Error && error.message.includes('Too many requests')) {
-          terminal.current.write("\r\n\x1b[33m⚠ Rate limit exceeded. Please wait before sending another message.\x1b[37m");
+      if (terminalRef.current) {
+        terminalRef.current.write(
+          "\r\n\x1b[31m[ERROR] Failed to send message\x1b[37m"
+        );
+        terminalRef.current.write(
+          `\r\n\x1b[31mError: ${
+            error instanceof Error ? error.message : "Unknown error"
+          }\x1b[37m`
+        );
+        if (
+          error instanceof Error &&
+          error.message.includes("Too many requests")
+        ) {
+          terminalRef.current.write(
+            "\r\n\x1b[33m⚠ Rate limit exceeded. Please wait before sending another message.\x1b[37m"
+          );
         }
-        terminal.current.write("\r\n\x1b[32m$ \x1b[37m");
+        terminalRef.current.write("\r\n\x1b[32m$ \x1b[37m");
       }
     } finally {
       setIsSubmitting(false);
@@ -258,7 +199,7 @@ export const Contact = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-black"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-900/20 via-transparent to-transparent"></div>
-      
+
       {/* Animated Grid */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
@@ -274,7 +215,8 @@ export const Contact = () => {
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
           </div>
           <p className="text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
-            Ready to bring your ideas to life? Let's connect and discuss how we can collaborate.
+            Ready to bring your ideas to life? Let's connect and discuss how we
+            can collaborate.
           </p>
         </div>
 
@@ -293,7 +235,10 @@ export const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
                       Name
                     </label>
                     <input
@@ -312,7 +257,10 @@ export const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
                       Email
                     </label>
                     <input
@@ -330,7 +278,10 @@ export const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Subject
                   </label>
                   <input
@@ -348,7 +299,10 @@ export const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Message
                   </label>
                   <textarea
@@ -389,10 +343,13 @@ export const Contact = () => {
                       <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-2">
                         <span className="text-white text-xs">✓</span>
                       </div>
-                      <span className="font-semibold">Message sent successfully!</span>
+                      <span className="font-semibold">
+                        Message sent successfully!
+                      </span>
                     </div>
                     <p className="text-sm text-green-200">
-                      I'll get back to you personally within 24 hours. No auto-reply is sent for security reasons.
+                      I'll get back to you personally within 24 hours. No
+                      auto-reply is sent for security reasons.
                     </p>
                   </div>
                 )}
@@ -403,10 +360,13 @@ export const Contact = () => {
                       <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center mr-2">
                         <span className="text-white text-xs">✗</span>
                       </div>
-                      <span className="font-semibold">Failed to send message</span>
+                      <span className="font-semibold">
+                        Failed to send message
+                      </span>
                     </div>
                     <p className="text-sm text-red-200">
-                      Please check your input and try again, or contact me directly at parakrama.22@cse.mrt.ac.lk
+                      Please check your input and try again, or contact me
+                      directly at parakrama.22@cse.mrt.ac.lk
                     </p>
                   </div>
                 )}
@@ -416,47 +376,32 @@ export const Contact = () => {
 
           {/* Right Column - Terminal */}
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 rounded-2xl border border-green-500/30 backdrop-blur-sm p-6">
-              {/* Terminal Header */}
-              <div className="flex items-center justify-between mb-4 p-4 bg-black/50 rounded-t-lg border-b border-gray-600">
-                <div className="flex items-center">
-                  <div className="flex space-x-2 mr-4">
-                    <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  </div>
-                  <span className="text-gray-300 text-sm font-mono">
-                    terminal@parakrama.dev:~$
-                  </span>
-                </div>
-                <div className="flex space-x-2">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 text-xs font-mono">ONLINE</span>
-                </div>
-              </div>
-
-              {/* Terminal Body */}
-              <div 
-                ref={terminalRef}
-                className="bg-black rounded-b-lg h-96 overflow-hidden"
-                style={{ fontFamily: "Monaco, 'Cascadia Code', 'Ubuntu Mono', monospace" }}
-              />
-
-              {/* Terminal Footer */}
-              <div className="mt-4 p-3 bg-black/30 rounded-lg border border-gray-700">
-                <div className="flex items-center justify-between text-xs text-gray-400 font-mono">
-                  <div className="flex items-center space-x-4">
-                    <span>Lines: 45</span>
-                    <span>Cols: 80</span>
-                    <span>PID: 1337</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-1 h-1 bg-green-400 rounded-full"></div>
-                    <span>Connected</span>
-                  </div>
-                </div>
-              </div>
+            {/* Terminal Mode Toggle */}
+            <div className="absolute -top-2 right-2 z-10">
+              <button
+                onClick={() => setIsTerminalInteractive(!isTerminalInteractive)}
+                className="px-3 py-1 text-xs bg-gray-800 text-gray-300 border border-gray-600 rounded-md hover:bg-gray-700 transition-colors"
+                title={isTerminalInteractive ? "Switch to Display Mode" : "Switch to Interactive Mode"}
+              >
+                {isTerminalInteractive ? "📺 Display" : "⌨️ Interactive"}
+              </button>
             </div>
+
+            <InteractiveTerminal
+              ref={terminalRef}
+              height="h-96"
+              interactive={isTerminalInteractive}
+              onReady={(terminal) => {
+                terminalRef.current = terminal;
+              }}
+              onCommand={(command) => {
+                const handled = handleTerminalCommand(command);
+                if (!handled) {
+                  // Let the terminal handle built-in commands
+                  return false;
+                }
+              }}
+            />
 
             {/* Side Info Cards */}
             <div className="mt-8 space-y-4">
@@ -466,17 +411,21 @@ export const Contact = () => {
                   Quick Response
                 </h4>
                 <p className="text-gray-400 text-sm">
-                  I typically respond within 24 hours. For urgent matters, feel free to call.
+                  I typically respond within 24 hours. For urgent matters, feel
+                  free to call.
                 </p>
               </div>
-              
+
               <div className="p-4 bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-lg border border-green-500/30 backdrop-blur-sm">
                 <h4 className="text-white font-semibold mb-2 flex items-center">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                  Open Source
+                  {isTerminalInteractive ? "Interactive Terminal" : "Terminal Demo"}
                 </h4>
                 <p className="text-gray-400 text-sm">
-                  Check out my GitHub for open-source projects and contributions.
+                  {isTerminalInteractive 
+                    ? "Try commands: help, contact, skills, projects, status, switch"
+                    : "Click the Interactive button to try typing commands in the terminal!"
+                  }
                 </p>
               </div>
             </div>

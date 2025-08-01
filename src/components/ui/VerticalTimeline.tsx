@@ -152,13 +152,16 @@ export const VerticalTimelineElement: React.FC<VerticalTimelineElementProps> = (
         viewport={{ once: true }}
         className="absolute left-5 md:left-1/2 w-20 h-20 rounded-full border-4 border-slate-900 z-10 transform md:-translate-x-1/2 shadow-2xl flex items-center justify-center group cursor-pointer"
         style={{
-          background: iconStyle?.background || "linear-gradient(135deg, #1e293b, #334155)",
+          background:
+            iconStyle?.background ||
+            "linear-gradient(135deg, #1e293b, #334155)",
           top: "2rem",
-          boxShadow: "0 0 30px rgba(147, 51, 234, 0.6), inset 0 0 20px rgba(255,255,255,0.1)",
+          boxShadow:
+            "0 0 30px rgba(147, 51, 234, 0.6), inset 0 0 20px rgba(255,255,255,0.1)",
         }}
       >
         {icon}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 opacity-0 group-hover:opacity-30 transition-opacity duration-300"
           animate={{ rotate: 360 }}
           transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -178,14 +181,16 @@ export const VerticalTimelineElement: React.FC<VerticalTimelineElementProps> = (
       >
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full animate-pulse"></div>
-          <span className="text-white font-semibold text-sm tracking-wide">{date}</span>
+          <span className="text-white font-semibold text-sm tracking-wide">
+            {date}
+          </span>
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-cyan-500/10 rounded-2xl"></div>
       </motion.div>
 
       {/* Content Card */}
       <div
-        className={`w-full md:w-5/12 ml-24 md:ml-0 ${
+        className={`w-full md:w-5/12 md:ml-0 ${
           isEven ? "md:pr-16" : "md:pl-16"
         }`}
       >
@@ -202,13 +207,17 @@ export const VerticalTimelineElement: React.FC<VerticalTimelineElementProps> = (
           className="relative rounded-3xl p-8 border border-[#7042f88b] shadow-2xl backdrop-blur-sm group cursor-pointer"
           style={{
             ...contentStyle,
-            background: contentStyle?.background || "linear-gradient(135deg, #1a1a2e, #16213e)",
+            background:
+              contentStyle?.background ||
+              "linear-gradient(135deg, #1a1a2e, #16213e)",
           }}
         >
           {/* Arrow */}
           <div
             className={`absolute top-8 ${
-              isEven ? "md:right-0 md:translate-x-full" : "md:left-0 md:-translate-x-full"
+              isEven
+                ? "md:right-0 md:translate-x-full"
+                : "md:left-0 md:-translate-x-full"
             } hidden md:block`}
           >
             <div
