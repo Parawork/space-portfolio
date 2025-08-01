@@ -1,0 +1,84 @@
+%PDF-1.4
+1 0 obj
+<<
+/Title (Parakrama Rathnayaka - Resume)
+/Creator (Space Portfolio)
+/Producer (Next.js Application)
+/CreationDate (D:20250801120000Z)
+>>
+endobj
+2 0 obj
+<<
+/Type /Catalog
+/Pages 3 0 R
+>>
+endobj
+3 0 obj
+<<
+/Type /Pages
+/Count 1
+/Kids [4 0 R]
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/Parent 3 0 R
+/Resources <<
+  /Font <<
+    /F1 <<
+      /Type /Font
+      /Subtype /Type1
+      /BaseFont /Helvetica
+    >>
+  >>
+>>
+/MediaBox [0 0 612 792]
+/Contents 5 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 356
+>>
+stream
+BT
+/F1 24 Tf
+100 700 Td
+(Parakrama Rathnayaka) Tj
+0 -40 Td
+/F1 16 Tf
+(Software DevOps Enthusiast) Tj
+0 -60 Td
+/F1 14 Tf
+(Email: parakrama.22@cse.mrt.ac.lk) Tj
+0 -30 Td
+(Phone: 0773528200) Tj
+0 -60 Td
+/F1 16 Tf
+(Professional Experience) Tj
+0 -40 Td
+/F1 12 Tf
+(This is a placeholder resume file.) Tj
+0 -20 Td
+(Please replace this with your actual resume.) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000170 00000 n 
+0000000217 00000 n 
+0000000274 00000 n 
+0000000485 00000 n 
+trailer
+<<
+/Size 6
+/Root 2 0 R
+/Info 1 0 R
+>>
+startxref
+891
+%%EOF
