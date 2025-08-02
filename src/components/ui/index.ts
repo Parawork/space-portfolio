@@ -3,7 +3,7 @@ export { Header } from './Header';
 export { SectionWrapper } from './SectionWrapper';
 export { VerticalTimeline, VerticalTimelineElement } from './VerticalTimeline';
 export { StarsCanvas } from './star-background';
-export { InteractiveTerminal } from "./InteractiveTerminal";
+export { InteractiveTerminal } from "../terminal/InteractiveTerminal";
 
 // Hero Components
 export { default as HeroText } from './HeroText';

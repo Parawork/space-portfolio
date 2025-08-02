@@ -5,7 +5,7 @@ import { sendEmail, type ContactFormData } from "@/lib/email";
 import {
   InteractiveTerminal,
   type TerminalRef,
-} from "@/components/ui/InteractiveTerminal";
+} from "@/components/terminal/InteractiveTerminal";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -381,7 +381,11 @@ export const Contact = () => {
               <button
                 onClick={() => setIsTerminalInteractive(!isTerminalInteractive)}
                 className="px-3 py-1 text-xs bg-gray-800 text-gray-300 border border-gray-600 rounded-md hover:bg-gray-700 transition-colors"
-                title={isTerminalInteractive ? "Switch to Display Mode" : "Switch to Interactive Mode"}
+                title={
+                  isTerminalInteractive
+                    ? "Switch to Display Mode"
+                    : "Switch to Interactive Mode"
+                }
               >
                 {isTerminalInteractive ? "📺 Display" : "⌨️ Interactive"}
               </button>
@@ -405,6 +409,19 @@ export const Contact = () => {
 
             {/* Side Info Cards */}
             <div className="mt-8 space-y-4">
+              <div className="p-4 bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-lg border border-green-500/30 backdrop-blur-sm">
+                <h4 className="text-white font-semibold mb-2 flex items-center">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
+                  {isTerminalInteractive
+                    ? "Interactive Terminal"
+                    : "Terminal Demo"}
+                </h4>
+                <p className="text-gray-400 text-sm">
+                  {isTerminalInteractive
+                    ? "Try commands: help, contact, skills, projects, status, switch"
+                    : "Click the Interactive button to try typing commands in the terminal!"}
+                </p>
+              </div>
               <div className="p-4 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-lg border border-blue-500/30 backdrop-blur-sm">
                 <h4 className="text-white font-semibold mb-2 flex items-center">
                   <div className="w-2 h-2 bg-blue-400 rounded-full mr-2"></div>
@@ -413,19 +430,6 @@ export const Contact = () => {
                 <p className="text-gray-400 text-sm">
                   I typically respond within 24 hours. For urgent matters, feel
                   free to call.
-                </p>
-              </div>
-
-              <div className="p-4 bg-gradient-to-r from-green-900/30 to-cyan-900/30 rounded-lg border border-green-500/30 backdrop-blur-sm">
-                <h4 className="text-white font-semibold mb-2 flex items-center">
-                  <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
-                  {isTerminalInteractive ? "Interactive Terminal" : "Terminal Demo"}
-                </h4>
-                <p className="text-gray-400 text-sm">
-                  {isTerminalInteractive 
-                    ? "Try commands: help, contact, skills, projects, status, switch"
-                    : "Click the Interactive button to try typing commands in the terminal!"
-                  }
                 </p>
               </div>
             </div>

@@ -207,7 +207,10 @@ const Experience = () => {
   );
 
   return (
-    <div className="relative min-h-screen overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-purple-900/30 via-slate-950 to-purple-950/40 will-change-transform">
+    <div
+      className="relative min-h-screen min-w-full pa-10 pb-20
+ overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-purple-900/30 via-slate-950 to-purple-950/40 will-change-transform"
+    >
       {/* Professional Cosmic Background */}
       <div className="absolute inset-0 -z-10 will-change-auto">
         <div className="absolute inset-0 bg-slate-950" />
