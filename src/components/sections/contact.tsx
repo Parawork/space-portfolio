@@ -377,7 +377,7 @@ export const Contact = () => {
           {/* Right Column - Terminal */}
           <div className="relative">
             {/* Terminal Mode Toggle */}
-            <div className="absolute -top-2 right-2 z-10">
+            <div className="absolute -top-5 right-2 z-10">
               <button
                 onClick={() => setIsTerminalInteractive(!isTerminalInteractive)}
                 className="px-3 py-1 text-xs bg-gray-800 text-gray-300 border border-gray-600 rounded-md hover:bg-gray-700 transition-colors"
