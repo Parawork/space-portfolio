@@ -1,11 +1,39 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import dynamic from "next/dynamic";
 import { sendEmail, type ContactFormData } from "@/lib/email";
-import {
-  InteractiveTerminal,
-  type TerminalRef,
-} from "@/components/terminal/InteractiveTerminal";
+import { type TerminalRef } from "@/components/terminal/InteractiveTerminal";
+
+// Dynamically import InteractiveTerminal with no SSR
+const InteractiveTerminal = dynamic(
+  () =>
+    import("@/components/terminal/InteractiveTerminal").then((mod) => ({
+      default: mod.InteractiveTerminal,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="bg-gray-900 rounded-lg border border-gray-700 shadow-2xl overflow-hidden">
+        <div className="bg-gray-800 px-4 py-2 flex items-center justify-between border-b border-gray-700">
+          <div className="flex items-center space-x-2">
+            <div className="flex space-x-1">
+              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+            </div>
+            <span className="text-gray-300 text-sm font-medium ml-3">
+              Terminal
+            </span>
+          </div>
+        </div>
+        <div className="h-96 bg-black flex items-center justify-center">
+          <div className="text-gray-400">Loading terminal...</div>
+        </div>
+      </div>
+    ),
+  }
+);
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -215,8 +243,8 @@ export const Contact = () => {
             <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
           </div>
           <p className="text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
-            Ready to bring your ideas to life? Let's connect and discuss how we
-            can collaborate.
+            Ready to bring your ideas to life? Let&apos;s connect and discuss
+            how we can collaborate.
           </p>
         </div>
 
@@ -348,7 +376,7 @@ export const Contact = () => {
                       </span>
                     </div>
                     <p className="text-sm text-green-200">
-                      I'll get back to you personally within 24 hours. No
+                      I&apos;ll get back to you personally within 24 hours. No
                       auto-reply is sent for security reasons.
                     </p>
                   </div>
@@ -404,6 +432,7 @@ export const Contact = () => {
                   // Let the terminal handle built-in commands
                   return false;
                 }
+                return true;
               }}
             />
 

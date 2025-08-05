@@ -66,7 +66,7 @@ export const Footer = () => {
             {"// Building digital solutions with modern technologies"}
           </p>
         </div>
-        ////
+        {/* Main Footer Content */}
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Personal Branding Section */}
@@ -168,7 +168,7 @@ export const Footer = () => {
             </div>
           ))}
         </div>
-        //
+        {/* Simple Divider */}
         {/* Simple Divider */}
         <div className="relative mb-8">
           <div className="border-t border-blue-500/30"></div>

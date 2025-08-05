@@ -24,6 +24,8 @@ const LazyExperienceCard = memo((props: TExperience & { index: number }) => {
   return <ExperienceCard {...props} />;
 });
 
+LazyExperienceCard.displayName = "LazyExperienceCard";
+
 const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
   (experience) => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -191,6 +193,8 @@ const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
     );
   }
 );
+
+ExperienceCard.displayName = "ExperienceCard";
 
 const Experience = () => {
   // Memoize star positions to prevent recalculation
