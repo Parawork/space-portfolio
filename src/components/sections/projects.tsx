@@ -54,7 +54,7 @@ const useCarouselNavigation = (
   return { scrollPrev, scrollNext, prevBtnDisabled, nextBtnDisabled };
 };
 
-const ProjectsRowCarousel = () => {
+const Projects = () => {
   // Initialize Embla Carousel with options
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start", // Align slides to the start
@@ -164,4 +164,4 @@ const ProjectsRowCarousel = () => {
   );
 };
 
-export default ProjectsRowCarousel;
+export default Projects;
