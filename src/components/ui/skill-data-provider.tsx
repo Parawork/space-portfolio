@@ -39,7 +39,26 @@ export const SkillDataProvider = ({
       custom={index}
       transition={{ delay: index * animationDelay }}
     >
-      <Image src={`/skills/${src}`} width={width} height={height} alt={name} />
+      <div
+        style={{
+          width: width,
+          height: height,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#181826",
+          borderRadius: "0.75rem",
+        }}
+        className="bg-[#181826] rounded-xl"
+      >
+        <Image
+          src={`/skills/${src}`}
+          width={width}
+          height={height}
+          alt={name}
+          style={{ objectFit: "contain", width: "100%", height: "100%" }}
+        />
+      </div>
     </motion.div>
   );
 };

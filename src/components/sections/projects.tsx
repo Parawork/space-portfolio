@@ -225,17 +225,18 @@ const Projects: React.FC = () => {
   return (
     <section
       id="projects-row"
-      className="w-full flex flex-col items-center justify-center py-20 bg-[#181826]/80"
+      className="w-full rounded-xl flex flex-col items-center justify-center py-20 bg-[#181826]/80"
       aria-labelledby="projects-heading"
     >
       <div className="max-w-7xl w-full mx-auto px-4 md:px-8">
         {/* Section Header */}
         <header className="flex justify-between items-center mb-12">
+          <h1></h1>
           <h2
             id="projects-heading"
             className="text-4xl md:text-5xl font-bold text-gray-100 tracking-tight"
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400">
               My Projects
             </span>
           </h2>

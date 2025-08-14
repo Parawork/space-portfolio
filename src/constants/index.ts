@@ -28,23 +28,13 @@ export const SOCIALS = [
 ] as const;
 
 export const FRONTEND_SKILL = [
-  {
-    skill_name: "HTML",
-    image: "html.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "CSS",
-    image: "css.png",
-    width: 80,
-    height: 80,
-  },
+  { skill_name: "HTML", image: "html.png", width: 80, height: 80 },
+  { skill_name: "CSS", image: "css.png", width: 80, height: 80 },
   {
     skill_name: "JavaScript",
     image: "js.png",
-    width: 65,
-    height: 65,
+    width: 80,
+    height: 80,
   },
   {
     skill_name: "Tailwind CSS",
@@ -58,45 +48,17 @@ export const FRONTEND_SKILL = [
     width: 80,
     height: 80,
   },
-  {
-    skill_name: "React",
-    image: "react.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Redux",
-    image: "redux.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "React Query",
-    image: "reactquery.png",
-    width: 80,
-    height: 80,
-  },
+  { skill_name: "React", image: "react.png", width: 80, height: 80 },
   {
     skill_name: "TypeScript",
     image: "ts.png",
     width: 80,
     height: 80,
   },
-  {
-    skill_name: "Next.js 14",
-    image: "next.png",
-    width: 80,
-    height: 80,
-  },
 ] as const;
 
 export const BACKEND_SKILL = [
-  {
-    skill_name: "Node.js",
-    image: "node.png",
-    width: 80,
-    height: 80,
-  },
+  { skill_name: "Node.js", image: "node.png", width: 80, height: 80 },
   {
     skill_name: "Express.js",
     image: "express.png",
@@ -106,59 +68,59 @@ export const BACKEND_SKILL = [
   {
     skill_name: "MongoDB",
     image: "mongodb.png",
-    width: 40,
-    height: 40,
-  },
-  {
-    skill_name: "Firebase",
-    image: "firebase.png",
-    width: 55,
-    height: 55,
+    width: 80,
+    height: 80,
   },
   {
     skill_name: "PostgreSQL",
     image: "postgresql.png",
-    width: 70,
-    height: 70,
+    width: 80,
+    height: 80,
   },
-  {
-    skill_name: "MySQL",
-    image: "mysql.png",
-    width: 70,
-    height: 70,
-  },
-  {
-    skill_name: "Prisma",
-    image: "prisma.png",
-    width: 70,
-    height: 70,
-  },
+  { skill_name: "MySQL", image: "mysql.png", width: 80, height: 80 },
+  { skill_name: "Prisma", image: "prisma.png", width: 80, height: 80 },
 ] as const;
 
-export const FULLSTACK_SKILL = [
+export const DEVOPS_SKILL = [
+  { skill_name: "Docker", image: "docker.png", width: 80, height: 80 },
   {
-    skill_name: "Docker",
-    image: "docker.png",
-    width: 70,
-    height: 70,
+    skill_name: "Kubernetes",
+    image: "kubernetes.png",
+    width: 80,
+    height: 80,
   },
-
+  { skill_name: "Git", image: "git.png", width: 80, height: 80 },
+  { skill_name: "Linux", image: "linux.jpg", width: 80, height: 80 },
   {
-    skill_name: "Figma",
-    image: "figma.png",
-    width: 50,
-    height: 50,
+    skill_name: "GitHub Actions",
+    image: "githubactions.png",
+    width: 80,
+    height: 80,
   },
+  { skill_name: "AWS", image: "aws.png", width: 80, height: 80 },
 ] as const;
 
 export const OTHER_SKILL = [
+  { skill_name: "Go", image: "go.png", width: 80, height: 80 },
+  { skill_name: "Python", image: "python.jpg", width: 80, height: 80 },
+  { skill_name: "Figma", image: "figma.png", width: 80, height: 80 },
+  { skill_name: "C", image: "c.png", width: 80, height: 80 },
+  { skill_name: "C++", image: "cplusplus.png", width: 80, height: 80 },
+  { skill_name: "Bash", image: "bash.png", width: 80, height: 80 },
   {
-    skill_name: "Go",
-    image: "go.png",
-    width: 60,
-    height: 60,
+    skill_name: "Markdown",
+    image: "markdown.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    skill_name: "Visual Studio Code",
+    image: "vscode.jpg",
+    width: 80,
+    height: 80,
   },
 ] as const;
+
 
 export const PROJECTS = [
   {
