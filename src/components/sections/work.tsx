@@ -1,19 +1,11 @@
 "use client";
 
-import React, {
-  memo,
-  useMemo,
-  useState,
-  useEffect,
-  lazy,
-  Suspense,
-} from "react";
+import React, { memo, useMemo, useState, useEffect, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CAREER_DATA } from "../../constants";
 import { SectionWrapper } from "../ui/SectionWrapper";
 import { Header } from "../ui/Header";
 import { TExperience } from "../../types";
-import { config } from "../../config";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -88,7 +80,7 @@ const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.12 }}
                   loading="eager"
                 />
               ) : (
@@ -98,6 +90,7 @@ const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
+                  transition={{ duration: 0.12 }}
                 />
               )}
             </AnimatePresence>
@@ -116,7 +109,7 @@ const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
               className="text-2xl md:text-3xl font-bold text-white mb-2 bg-gradient-to-r from-white via-purple-100 to-cyan-100 bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
             >
               {experience.title}
             </motion.h3>
@@ -124,9 +117,9 @@ const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
               className="flex items-center gap-2 mb-3"
               initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+              transition={{ duration: 0.18, delay: 0.05, ease: "easeOut" }}
             >
-              <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full animate-pulse"></div>
+              s
               <p className="text-purple-300 text-lg font-semibold tracking-wide">
                 {experience.companyName}
               </p>
@@ -137,7 +130,7 @@ const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
               className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full border border-purple-500/30 backdrop-blur-sm"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
+              transition={{ duration: 0.14, delay: 0.07, ease: "easeOut" }}
               whileHover={{ scale: 1.05 }}
             >
               <svg
@@ -162,7 +155,7 @@ const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
             className="hidden lg:block"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.18, delay: 0.09, ease: "easeOut" }}
           >
             <ul className="space-y-3">
               {experience.points.map((point, index) => (
@@ -172,8 +165,8 @@ const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
                   initial={{ opacity: 0, x: -15 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{
-                    duration: 0.3,
-                    delay: 0.25 + index * 0.05,
+                    duration: 0.14,
+                    delay: 0.12 + index * 0.03,
                     ease: "easeOut",
                   }}
                 >
@@ -196,7 +189,7 @@ const ExperienceCard: React.FC<TExperience & { index: number }> = memo(
 
 ExperienceCard.displayName = "ExperienceCard";
 
-const Experience = () => {
+const EducationJourney = () => {
   // Memoize star positions to prevent recalculation
   const stars = useMemo(
     () =>
@@ -246,27 +239,33 @@ const Experience = () => {
 
       {/* Content Container */}
       <div className="relative z-10">
-        <Header useMotion={true} {...config.sections.experience} />
+        <Header
+          useMotion={true}
+          title="Education Journey"
+          subtitle="My academic path and achievements"
+        />
 
         <motion.div
           className="mt-12 flex flex-col items-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.22, ease: "easeOut" }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <VerticalTimeline>
-            {CAREER_DATA.map((experience, index) => (
-              <Suspense
-                key={experience.id}
-                fallback={
-                  <div className="w-full h-64 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl animate-pulse border border-slate-700/30" />
-                }
-              >
-                <LazyExperienceCard {...experience} index={index} />
-              </Suspense>
-            ))}
-          </VerticalTimeline>
+          <div className="w-full relative">
+            <VerticalTimeline>
+              {CAREER_DATA.map((education, index) => (
+                <Suspense
+                  key={education.id}
+                  fallback={
+                    <div className="w-full h-32 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl animate-pulse border border-slate-700/30" />
+                  }
+                >
+                  <LazyExperienceCard {...education} index={index} />
+                </Suspense>
+              ))}
+            </VerticalTimeline>
+          </div>
         </motion.div>
 
         {/* Action Buttons */}
@@ -334,4 +333,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, "work");
+export default SectionWrapper(EducationJourney, "education");
