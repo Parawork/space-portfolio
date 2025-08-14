@@ -204,10 +204,7 @@ const EducationJourney = () => {
   );
 
   return (
-    <div
-      className="relative min-h-screen min-w-full pa-10 pb-20
- overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-purple-900/30 via-slate-950 to-purple-950/40 will-change-transform"
-    >
+    <div className="relative min-h-screen min-w-full px-2 sm:px-6 md:px-10 pb-16 sm:pb-20 overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-purple-900/30 via-slate-950 to-purple-950/40 will-change-transform">
       {/* Professional Cosmic Background */}
       <div className="absolute inset-0 -z-10 will-change-auto">
         <div className="absolute inset-0 bg-slate-950" />
@@ -246,7 +243,7 @@ const EducationJourney = () => {
         />
 
         <motion.div
-          className="mt-12 flex flex-col items-center"
+          className="mt-8 sm:mt-12 flex flex-col items-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.22, ease: "easeOut" }}
@@ -258,7 +255,7 @@ const EducationJourney = () => {
                 <Suspense
                   key={education.id}
                   fallback={
-                    <div className="w-full h-32 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl animate-pulse border border-slate-700/30" />
+                    <div className="w-full h-24 sm:h-32 bg-gradient-to-br from-slate-800/50 to-slate-900/50 rounded-2xl animate-pulse border border-slate-700/30" />
                   }
                 >
                   <LazyExperienceCard {...education} index={index} />
@@ -270,7 +267,7 @@ const EducationJourney = () => {
 
         {/* Action Buttons */}
         <motion.div
-          className="mt-16 flex justify-center items-center gap-6 flex-wrap"
+          className="mt-10 sm:mt-16 flex justify-center items-center gap-4 sm:gap-6 flex-wrap"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
@@ -281,13 +278,13 @@ const EducationJourney = () => {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 w-52 text-lg font-semibold text-white bg-slate-800/70 border border-white/20 rounded-full backdrop-blur-sm transition-all duration-200 hover:bg-slate-800 hover:border-cyan-400/50 hover:shadow-cyan-500/20 hover:shadow-2xl will-change-transform"
+            className="group relative inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 w-40 sm:w-52 text-base sm:text-lg font-semibold text-white bg-slate-800/70 border border-white/20 rounded-full backdrop-blur-sm transition-all duration-200 hover:bg-slate-800 hover:border-cyan-400/50 hover:shadow-cyan-500/20 hover:shadow-2xl will-change-transform"
             whileHover={{ scale: 1.03, y: -3 }}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <svg
-              className="w-6 h-6 text-cyan-400 transition-colors duration-300"
+              className="w-5 sm:w-6 h-5 sm:h-6 text-cyan-400 transition-colors duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -306,13 +303,13 @@ const EducationJourney = () => {
           {/* Contact Button */}
           <motion.a
             href="mailto:parakrama.22@cse.mrt.ac.lk"
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 w-52 text-lg font-semibold text-white bg-slate-800/70 border border-white/20 rounded-full backdrop-blur-sm transition-all duration-200 hover:bg-slate-800 hover:border-purple-400/50 hover:shadow-purple-500/20 hover:shadow-2xl will-change-transform"
+            className="group relative inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 w-40 sm:w-52 text-base sm:text-lg font-semibold text-white bg-slate-800/70 border border-white/20 rounded-full backdrop-blur-sm transition-all duration-200 hover:bg-slate-800 hover:border-purple-400/50 hover:shadow-purple-500/20 hover:shadow-2xl will-change-transform"
             whileHover={{ scale: 1.03, y: -3 }}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <svg
-              className="w-6 h-6 text-purple-400 transition-colors duration-300"
+              className="w-5 sm:w-6 h-5 sm:h-6 text-purple-400 transition-colors duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
