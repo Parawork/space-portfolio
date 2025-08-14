@@ -7,86 +7,7 @@ import {
   RxLinkedinLogo,
 } from "react-icons/rx";
 
-export const SKILL_DATA = [
-  {
-    skill_name: "HTML",
-    image: "html.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "CSS",
-    image: "css.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "JavaScript",
-    image: "js.png",
-    width: 65,
-    height: 65,
-  },
-  {
-    skill_name: "Tailwind CSS",
-    image: "tailwind.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "React",
-    image: "react.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Redux",
-    image: "redux.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "React Query",
-    image: "reactquery.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "TypeScript",
-    image: "ts.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Next.js 14",
-    image: "next.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Framer Motion",
-    image: "framer.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Stripe",
-    image: "stripe.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "Node.js",
-    image: "node.png",
-    width: 80,
-    height: 80,
-  },
-  {
-    skill_name: "MongoDB",
-    image: "mongodb.png",
-    width: 40,
-    height: 40,
-  },
-] as const;
+
 
 export const SOCIALS = [
   {
@@ -212,27 +133,9 @@ export const BACKEND_SKILL = [
     width: 70,
     height: 70,
   },
-  {
-    skill_name: "Graphql",
-    image: "graphql.png",
-    width: 80,
-    height: 80,
-  },
 ] as const;
 
 export const FULLSTACK_SKILL = [
-  {
-    skill_name: "React Native",
-    image: "reactnative.png",
-    width: 70,
-    height: 70,
-  },
-  {
-    skill_name: "Tauri",
-    image: "tauri.png",
-    width: 70,
-    height: 70,
-  },
   {
     skill_name: "Docker",
     image: "docker.png",
@@ -262,8 +165,8 @@ export const PROJECTS = [
     title: "Collaborative Project Management Tool",
     description:
       "A scalable project management platform with real-time collaboration features and advanced workflow automation. Built with microservices architecture using Spring Boot and React.js frontend, featuring WebSocket integration with Kafka for real-time communication. Implements modern DevOps practices with Docker containerization and CI/CD pipelines.",
-    image: "/projects/project-management.png",
-    link: "#", // Ongoing project - no live link yet
+    image: "/projects/mid.png",
+    link: "https://github.com/MidLaneX/frontend.git", // Ongoing project - no live link yet
     technologies: [
       "Spring Boot",
       "React.js",
@@ -280,7 +183,7 @@ export const PROJECTS = [
     title: "Smart Supply Chain Management System",
     description:
       "A warehouse management module designed for intelligent supply chain optimization with real-time inventory tracking capabilities. Features comprehensive database integration with automated testing through GitHub Actions and RESTful API architecture for seamless data management and supply chain visibility.",
-    image: "/projects/warehouse-management.png",
+    image: "/projects/ware.png",
     link: "https://github.com/Parawork/Warehouse-Management-Services",
     technologies: [
       "Django",
@@ -296,7 +199,7 @@ export const PROJECTS = [
     title: "AI-Powered Resume Analysis Platform",
     description:
       "An intelligent resume analyzing system that provides compatibility scoring and detailed analysis using advanced AI algorithms. Built as a responsive single-page application with modern UI/UX principles, offering users comprehensive insights into resume optimization and job matching capabilities.",
-    image: "/projects/resume-analysis.png",
+    image: "/projects/ai.png",
     link: "https://jsm-resume-7rk7.puter.site",
     technologies: [
       "Puter.js",
@@ -322,7 +225,7 @@ export const PROJECTS = [
     title: "CBConstruction – Business Website Platform",
     description:
       "A comprehensive business website featuring dynamic service portfolio and automated client inquiry management system with integrated AI chatbot. Designed as a company portfolio with future plans for employee management system development, showcasing modern web development practices.",
-    image: "/projects/cbconstruction.png",
+    image: "/projects/construction.png",
     link: "https://frontend-gamma-ivory-48.vercel.app/",
     technologies: ["PostgreSQL", "Docker", "React.js", "REST APIs"],
     status: "Ongoing",
@@ -332,7 +235,7 @@ export const PROJECTS = [
     title: "Enterprise E-commerce Platform",
     description:
       "A full-stack e-commerce solution with advanced features including secure payment integration and comprehensive order management system. Built with scalable database architecture featuring optimized queries and transactions, providing a robust foundation for enterprise-level online commerce.",
-    image: "/projects/ecommerce.png",
+    image: "/projects/ecom.png",
     link: "https://github.com/Parawork/E-commerce-platform",
     technologies: [
       "React.js",
@@ -343,27 +246,6 @@ export const PROJECTS = [
     ],
     status: "Completed",
     year: "2024",
-  },
-  {
-    title: "Modern Next.js 14 Portfolio",
-    description:
-      'Embark on a journey through my professional evolution with the "Modern Next.js Portfolio" - a dynamic showcase of my skills, experiences, and passion for web development. Crafted with precision and powered by Next.js, this portfolio is more than just a static display; it\'s an immersive experience that reflects the cutting edge of modern web technologies.',
-    image: "/projects/project-1.png",
-    link: "https://example.com",
-  },
-  {
-    title: "Interactive Cards Portfolio",
-    description:
-      'Step into the extraordinary world of my professional journey through the "Interactive Cards Portfolio" - an innovative and visually captivating platform that redefines the traditional portfolio experience. Ditching the conventional static layout, this portfolio leverages interactive cards to showcase my skills, projects, and personality in an engaging and dynamic manner.',
-    image: "/projects/project-2.png",
-    link: "https://example.com",
-  },
-  {
-    title: "Space Themed Website",
-    description:
-      'Embark on an interstellar journey with my "Space Themed Website", a mesmerizing space-themed website that invites you to explore the cosmic wonders beyond our world. Immerse yourself in an awe-inspiring digital experience that blends cutting-edge design with the mysteries of the universe.',
-    image: "/projects/project-3.png",
-    link: "https://example.com",
   },
 ] as const;
 
