@@ -1,14 +1,3 @@
-# 🌌 Space Portfolio
-
-A modern, space-themed portfolio built with Next.js 14, TypeScript, and Tailwind CSS featuring 3D animations and responsive design.
-
-![Space Portfolio](/.github/images/img_main.png)
-
-[![GitHub license](https://img.shields.io/github/license/Parawork/space-portfolio)](https://github.com/Parawork/space-portfolio/blob/main/LICENSE)
-[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-blue)](https://tailwindcss.com/)
-
 ## ✨ Features
 
 - 🚀 **Modern Architecture**: Clean, maintainable code structure
