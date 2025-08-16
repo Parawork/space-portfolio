@@ -17,17 +17,13 @@ const Hero = () => {
 
   const handleContactClick = () => {
     // Option 1: Direct phone call
-    window.location.href = "tel:+94704064244";
+    window.location.href = "tel:+94773528200";
 
     // Show feedback notification
     setShowNotification(true);
     setTimeout(() => setShowNotification(false), 3000);
 
-    // Option 2: Copy to clipboard (uncomment if preferred)
-    // navigator.clipboard.writeText("0704064244").then(() => {
-    //     setShowNotification(true);
-    //     setTimeout(() => setShowNotification(false), 3000);
-    // });
+  
   };
 
   return (
@@ -55,7 +51,7 @@ const Hero = () => {
               <span className="text-green-300">✓</span>
               <div>
                 <div className="font-medium text-sm">Calling...</div>
-                <div className="text-xs text-green-200">0704064244</div>
+                <div className="text-xs text-green-200">0773528200</div>
               </div>
             </div>
           </motion.div>
