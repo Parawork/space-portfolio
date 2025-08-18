@@ -224,7 +224,7 @@ const Projects: React.FC = () => {
 
   return (
     <section
-      id="projects-row"
+      id="projects"
       className="w-full rounded-xl flex flex-col items-center justify-center py-20 bg-[#181826]/80"
       aria-labelledby="projects-heading"
     >

@@ -104,31 +104,9 @@ export const Skills: React.FC = () => {
             <source src="/videos/skills-bg.webm" type="video/webm" />
           </motion.video>
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90 backdrop-blur-sm" />
       </div>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden z-0">
-        {[...Array(15)].map((_, i) => (
-          <motion.span
-            key={i}
-            className="absolute w-1 h-1 bg-purple-400 rounded-full"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.3, 1, 0.3],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 2.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div>
+
 
       {/* Header */}
       <header className="relative z-10 text-center max-w-xl px-4">

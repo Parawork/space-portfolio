@@ -8,7 +8,8 @@
 .DS_Store
 # testing
 /coverage
-
+package-lock.json
+.env
 # next.js
 /.next/
 /out/
