@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import { Inter } from "next/font/google";
 import type { PropsWithChildren } from "react";
 import { Footer, Navbar } from "@/components/layout";
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         >
           {children}
         </div>
+        <Analytics/>
         <Footer />
       </body>
     </html>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const siteConfig: Metadata = {
   title: "Parakrama Rathnayaka | Space Portfolio",
-  description: "Welcome to my full stack Next.js 14 space portfolio.",
+  description: "Full Stack & DevOps Enthusiast. This is my portfolio showcasing projects, skills, and experience.",
   keywords: [
     "reactjs",
     "nextjs",
@@ -35,9 +35,24 @@ export const siteConfig: Metadata = {
     "css",
   ] as Array<string>,
   authors: {
-    name: "Sanidhya Kumar Verma",
-    url: "https://github.com/sanidhyy",
+    name: "Parakrama Rathnayaka",
+    url: "https://github.com/Parawork",
   },
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico", sizes: "any" },
+      { url: "/favicon/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { url: "/favicon/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+  },
+  manifest: "/favicon/site.webmanifest",
 } as const;
 
 
